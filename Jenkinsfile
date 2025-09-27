@@ -19,6 +19,12 @@ pipeline {
             }
         }
 
+           stage('Code Quality') {
+            steps {
+                sh 'npm run lint'
+            }
+        }
+
         stage('Security Scan') {
             steps {
                 // Run npm audit and continue even if vulnerabilities are found
@@ -43,6 +49,9 @@ pipeline {
                 echo 'Deployment step — here we could run or deploy the app.'
             }
         }
+
+        
+
     }
 
     post {
