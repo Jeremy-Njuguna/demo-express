@@ -19,11 +19,6 @@ pipeline {
             }
         }
 
-           stage('Code Quality') {
-            steps {
-                sh 'npm run lint'
-            }
-        }
 
         stage('Security Scan') {
             steps {
@@ -47,6 +42,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deployment step — here we could run or deploy the app.'
+            }
+        }
+
+          stage('Code Quality') {
+            steps {
+                sh 'npm run lint'
             }
         }
 
