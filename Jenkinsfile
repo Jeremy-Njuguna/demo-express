@@ -19,6 +19,13 @@ pipeline {
             }
         }
 
+        stage('Security Scan') {
+            steps {
+                // Run npm audit and continue even if vulnerabilities are found
+                sh 'npm audit || true'
+            }
+        }
+
         stage('Run Tests') {
             steps {
                 sh 'npm test || true'   // skip failures for now if no tests
