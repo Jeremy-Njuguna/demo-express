@@ -5,6 +5,11 @@ const routes = require("./routes");
 const app = express();
 app.use(express.json());
 
+// health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: "UP" });
+});
+
 app.use("/", routes);
 
 // fallback route

@@ -45,6 +45,15 @@ pipeline {
             }
         }
 
+        stage('Monitoring') {
+            steps {
+                echo 'Checking application health endpoint...'
+                // Try to hit the health endpoint (only works if deployed locally or on a server)
+                bat 'curl -s http://localhost:3000/health || exit /b 0'
+            }
+        }
+
+
           stage('Code Quality') {
             steps {
                 sh 'npm run lint'
